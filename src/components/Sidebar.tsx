@@ -102,6 +102,7 @@ const SidebarRoot = ({
             size="small"
             onClick={handleToggle}
             aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            sx={{ ml: 'auto' }}
           >
             {collapsed ? (
               <ChevronRightRoundedIcon fontSize="small" />
@@ -110,7 +111,7 @@ const SidebarRoot = ({
             )}
           </IconButton>
         </Stack>
-        <Stack spacing={2} flexGrow={1} minHeight={0}>
+        <Stack spacing={collapsed ? 2 : 3} flexGrow={1} minHeight={0}>
           {children}
         </Stack>
       </Paper>
