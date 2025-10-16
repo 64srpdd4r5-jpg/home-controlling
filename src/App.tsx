@@ -1,4 +1,15 @@
-import { Avatar, Box, Container, IconButton, Stack } from '@mui/material';
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  InputBase,
+  Paper,
+  Stack,
+  Typography,
+} from '@mui/material';
 import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
@@ -12,6 +23,11 @@ import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
+import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
+import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import InfoBox from './components/InfoBox';
 import Kpi from './components/Kpi';
 import Sidebar from './components/Sidebar';
@@ -55,17 +71,105 @@ function App() {
             <Sidebar.MenuItem icon={<LogoutRoundedIcon />} label="Logout" variant="danger" />
           </Sidebar.Section>
         </Sidebar>
+        <Box flexGrow={1} minWidth={0} display="flex" flexDirection="column" gap={3}>
+          <Paper
+            elevation={0}
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: { xs: 'stretch', md: 'center' },
+              justifyContent: 'space-between',
+              borderRadius: 3,
+              border: '1px solid',
+              borderColor: 'divider',
+              px: { xs: 2, md: 3 },
+              py: { xs: 2, md: 1.5 },
+              gap: 2,
+            }}
+          >
+            <Paper
+              component="form"
+              elevation={0}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexGrow: 1,
+                borderRadius: 2.5,
+                border: '1px solid',
+                borderColor: 'divider',
+                px: 2,
+                py: 0.75,
+                minWidth: { xs: '100%', md: 280 },
+                bgcolor: 'background.paper',
+              }}
+            >
+              <SearchRoundedIcon color="action" />
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search anything..."
+                inputProps={{ 'aria-label': 'search anything' }}
+              />
+              <IconButton size="small" color="inherit" aria-label="open filters">
+                <TuneRoundedIcon fontSize="small" />
+              </IconButton>
+            </Paper>
 
-        <InfoBox
-          title={<AttachMoneyRoundedIcon fontSize="large" />}
-          action={
-            <IconButton size="small" color="inherit" aria-label="income actions">
-              <MoreVertRoundedIcon fontSize="small" />
-            </IconButton>
-          }
-        >
-          <Kpi title="Income" value="$21.30" />
-        </InfoBox>
+            <Stack direction="row" spacing={1.5} alignItems="center" justifyContent="flex-end">
+              <IconButton
+                aria-label="view notifications"
+                sx={{
+                  borderRadius: 2,
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  width: 44,
+                  height: 44,
+                }}
+              >
+                <Badge color="error" variant="dot" overlap="circular">
+                  <NotificationsNoneRoundedIcon />
+                </Badge>
+              </IconButton>
+              <Button
+                variant="outlined"
+                startIcon={<CalendarMonthRoundedIcon />}
+                endIcon={<KeyboardArrowDownRoundedIcon />}
+                sx={{
+                  borderRadius: 2,
+                  textTransform: 'none',
+                  px: 2,
+                  color: 'text.primary',
+                  borderColor: 'divider',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    bgcolor: 'action.hover',
+                  },
+                }}
+              >
+                <Stack direction="column" spacing={0} alignItems="flex-start">
+                  <Typography variant="caption" color="text.secondary" lineHeight={1}>
+                    Billing period
+                  </Typography>
+                  <Typography variant="body2" lineHeight={1.25}>
+                    February 2025
+                  </Typography>
+                </Stack>
+              </Button>
+            </Stack>
+          </Paper>
+
+          <Box component="main" flexGrow={1} display="flex" flexDirection="column">
+            <InfoBox
+              title={<AttachMoneyRoundedIcon fontSize="large" />}
+              action={
+                <IconButton size="small" color="inherit" aria-label="income actions">
+                  <MoreVertRoundedIcon fontSize="small" />
+                </IconButton>
+              }
+            >
+              <Kpi title="Income" value="$21.30" />
+            </InfoBox>
+          </Box>
+        </Box>
       </Stack>
     </Container>
   );
