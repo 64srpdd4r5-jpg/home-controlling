@@ -33,8 +33,24 @@ import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
-      <Sidebar title="mowany">
+    <Box
+      sx={{
+        display: 'flex',
+        minHeight: '100vh',
+        bgcolor: '#f5f7fb',
+        p: { xs: 2, lg: 4 },
+        gap: { xs: 2, lg: 3 },
+        color: '#101828',
+      }}
+    >
+      <Sidebar
+        title="mowany"
+        sx={{
+          bgcolor: '#ffffff',
+          borderRadius: { xs: 3, lg: 4 },
+          boxShadow: '0 18px 50px rgba(15, 33, 89, 0.08)',
+        }}
+      >
         <Sidebar.UserBadge
           name="Peter Parker"
           description="Personal Account"
@@ -74,7 +90,13 @@ function App() {
         display="flex"
         flexDirection="column"
         minHeight={0}
-        sx={{ bgcolor: 'background.paper', borderTopLeftRadius: { md: 24 } }}
+        sx={{
+          gap: { xs: 2, lg: 3 },
+          maxWidth: 1200,
+          width: '100%',
+          mx: 'auto',
+          color: '#101828',
+        }}
       >
         <Box
           component="header"
@@ -83,14 +105,16 @@ function App() {
             flexDirection: { xs: 'column', md: 'row' },
             alignItems: { xs: 'stretch', md: 'center' },
             justifyContent: 'space-between',
-            gap: 2,
-            px: { xs: 2, md: 4 },
+            gap: { xs: 2, md: 3 },
+            px: { xs: 2.5, md: 4 },
             py: { xs: 2.5, md: 3 },
-            borderBottom: '1px solid',
-            borderColor: 'divider',
+            borderRadius: { xs: 3, md: 4 },
+            border: '1px solid',
+            borderColor: 'rgba(39, 64, 115, 0.08)',
+            boxShadow: '0 20px 40px rgba(15, 33, 89, 0.05)',
             position: 'sticky',
-            top: 0,
-            bgcolor: 'background.paper',
+            top: { xs: 16, md: 24 },
+            bgcolor: '#ffffff',
             zIndex: (theme) => theme.zIndex.appBar,
           }}
         >
@@ -101,18 +125,27 @@ function App() {
               display: 'flex',
               alignItems: 'center',
               flexGrow: 1,
-              borderRadius: 2.5,
+              borderRadius: 2,
               border: '1px solid',
-              borderColor: 'divider',
+              borderColor: 'rgba(39, 64, 115, 0.1)',
               px: 2,
-              py: 0.75,
+              py: 1,
               minWidth: { xs: '100%', md: 280 },
-              bgcolor: 'background.paper',
+              bgcolor: '#f8faff',
+              color: '#101828',
             }}
           >
             <SearchRoundedIcon color="action" />
             <InputBase
-              sx={{ ml: 1, flex: 1 }}
+              sx={{
+                ml: 1,
+                flex: 1,
+                color: '#101828',
+                '& input::placeholder': {
+                  color: 'rgba(16, 24, 40, 0.6)',
+                  opacity: 1,
+                },
+              }}
               placeholder="Search anything..."
               inputProps={{ 'aria-label': 'search anything' }}
             />
@@ -125,11 +158,12 @@ function App() {
             <IconButton
               aria-label="view notifications"
               sx={{
-                borderRadius: 2,
+                borderRadius: 3,
                 border: '1px solid',
-                borderColor: 'divider',
+                borderColor: 'rgba(39, 64, 115, 0.1)',
                 width: 44,
                 height: 44,
+                bgcolor: '#f8faff',
               }}
             >
               <Badge color="error" variant="dot" overlap="circular">
@@ -141,14 +175,15 @@ function App() {
               startIcon={<CalendarMonthRoundedIcon />}
               endIcon={<KeyboardArrowDownRoundedIcon />}
               sx={{
-                borderRadius: 2,
+                borderRadius: 3,
                 textTransform: 'none',
-                px: 2,
+                px: 2.5,
                 color: 'text.primary',
-                borderColor: 'divider',
+                borderColor: 'rgba(39, 64, 115, 0.12)',
+                bgcolor: '#f8faff',
                 '&:hover': {
-                  borderColor: 'primary.main',
-                  bgcolor: 'action.hover',
+                  borderColor: 'rgba(39, 64, 115, 0.2)',
+                  bgcolor: '#f0f4ff',
                 },
               }}
             >
@@ -164,7 +199,20 @@ function App() {
           </Stack>
         </Box>
 
-        <Box component="main" flexGrow={1} minHeight={0} overflow="auto" px={{ xs: 2, md: 4 }} py={{ xs: 2.5, md: 4 }}>
+        <Box
+          component="main"
+          flexGrow={1}
+          minHeight={0}
+          overflow="auto"
+          px={{ xs: 2.5, md: 4 }}
+          py={{ xs: 2.5, md: 4 }}
+          sx={{
+            borderRadius: { xs: 3, md: 4 },
+            border: '1px solid',
+            borderColor: 'rgba(39, 64, 115, 0.08)',
+            bgcolor: '#ffffff',
+          }}
+        >
           <InfoBox
             title={<AttachMoneyRoundedIcon fontSize="large" />}
             action={

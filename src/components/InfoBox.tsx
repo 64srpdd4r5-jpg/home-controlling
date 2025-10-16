@@ -13,7 +13,15 @@ const InfoBox = ({ title, action, children }: InfoBoxProps) => {
   const renderTitle = (content: InfoBoxTitle) => {
     if (typeof content === 'string') {
       return (
-        <Typography variant="subtitle2" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1.2 }}>
+        <Typography
+          variant="subtitle2"
+          color="#101828"
+          sx={{
+            textTransform: 'uppercase',
+            letterSpacing: 1.2,
+            fontWeight: 700,
+          }}
+        >
           {content}
         </Typography>
       );
@@ -22,10 +30,10 @@ const InfoBox = ({ title, action, children }: InfoBoxProps) => {
     return (
       <Box
         sx={{
-          width: 48,
-          height: 48,
-          borderRadius: '50%',
-          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          width: 56,
+          height: 56,
+          borderRadius: '18px',
+          bgcolor: '#ecf2ff',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -43,14 +51,19 @@ const InfoBox = ({ title, action, children }: InfoBoxProps) => {
     <Paper
       elevation={0}
       sx={{
-        backgroundColor: 'background.paper',
-        px: 3,
-        py: 2,
+        bgcolor: '#ffffff',
+        px: 3.5,
+        py: 3,
         width: 240,
         minHeight: 200,
         display: 'flex',
         flexDirection: 'column',
         gap: 3,
+        borderRadius: 3,
+        border: '1px solid',
+        borderColor: 'rgba(39, 64, 115, 0.08)',
+        boxShadow: '0 20px 40px rgba(15, 33, 89, 0.05)',
+        color: '#101828',
       }}
     >
       <Stack
