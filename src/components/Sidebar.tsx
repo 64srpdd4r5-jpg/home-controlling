@@ -75,12 +75,12 @@ const SidebarRoot = ({
         elevation={0}
         sx={[
           (theme) => ({
-            width: collapsed ? 88 : width,
+            width: collapsed ? 88 : 280,
             transition: theme.transitions.create(['width', 'padding'], {
               duration: theme.transitions.duration.shorter,
             }),
             backgroundColor: 'background.paper',
-            borderRadius: 5,
+            borderRadius: 0.5,
             py: 3,
             px: collapsed ? 1.5 : 3,
             display: 'flex',
@@ -92,7 +92,12 @@ const SidebarRoot = ({
           ...(Array.isArray(sx) ? sx : sx ? [sx] : []),
         ]}
       >
-        <Stack direction="row" alignItems="center" spacing={collapsed ? 0 : 2}>
+        <Stack direction="row" alignItems="end" spacing={collapsed ? 0 : 2}>
+          {!collapsed ? (
+            <Typography variant="h6" fontWeight={700} noWrap>
+              {title}
+            </Typography>
+          ) : null}
           <IconButton
             size="small"
             onClick={handleToggle}
@@ -104,13 +109,8 @@ const SidebarRoot = ({
               <ChevronLeftRoundedIcon fontSize="small" />
             )}
           </IconButton>
-          {!collapsed ? (
-            <Typography variant="h6" fontWeight={700} noWrap>
-              {title}
-            </Typography>
-          ) : null}
         </Stack>
-        <Stack spacing={collapsed ? 2 : 3} flexGrow={1} minHeight={0}>
+        <Stack spacing={2} flexGrow={1} minHeight={0}>
           {children}
         </Stack>
       </Paper>
@@ -168,7 +168,7 @@ const SidebarUserBadge = ({
       sx={{
         px: 1,
         py: 1,
-        borderRadius: 3,
+        borderRadius: 0.5,
         backgroundColor: 'rgba(255, 255, 255, 0.04)',
       }}
     >
@@ -219,8 +219,8 @@ const SidebarMenuItem = ({
             : theme.palette.text.primary;
 
         return {
-          borderRadius: 3,
-          px: collapsed ? 1.5 : 2,
+          borderRadius: 0.5,
+          px: collapsed ? 2.5: 2,
           py: collapsed ? 1.25 : 1.2,
           gap: collapsed ? 0 : 1.5,
           color: baseColor,
@@ -247,8 +247,9 @@ const SidebarMenuItem = ({
         };
       }}
     >
-      <ListItemIcon>{icon}</ListItemIcon>
-      {!collapsed ? (
+      <Stack direction="row" alignItems={collapsed ? 'center' : 'start'}>
+        <ListItemIcon>{icon}</ListItemIcon>
+        {!collapsed ? (
         <ListItemText
           primary={label}
           primaryTypographyProps={{
@@ -257,6 +258,7 @@ const SidebarMenuItem = ({
           }}
         />
       ) : null}
+      </Stack>
     </ListItemButton>
   );
 
